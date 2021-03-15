@@ -24,7 +24,9 @@ Route::get('/clear-cache', function() {
     $exitCode = Artisan::call('config:cache');
     $exitCode = Artisan::call('cache:clear');
 });
-
+Route::get('/migrate', function() {
+    $exitCode = Artisan::call('migrate');
+});
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/dark_mode', [App\Http\Controllers\HomeController::class, 'dark_mode'])->name('dark_mode');
