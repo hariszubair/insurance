@@ -16,9 +16,36 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('/welcome', function () {
+    return view('welcome');
+});
 Auth::routes();
 
-Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/dark_mode', [App\Http\Controllers\HomeController::class, 'dark_mode'])->name('dark_mode');
+
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
+Route::get('/about_us', [App\Http\Controllers\HomeController::class, 'about_us'])->name('about_us');
+Route::get('/contact', [App\Http\Controllers\HomeController::class, 'contact'])->name('contact');
+
+//insurances 
+Route::get('/pet_insurance', [App\Http\Controllers\HomeController::class, 'pet_insurance'])->name('pet_insurance');
+Route::get('/health_insurance', [App\Http\Controllers\HomeController::class, 'health_insurance'])->name('health_insurance');
+Route::get('/life_insurance', [App\Http\Controllers\HomeController::class, 'life_insurance'])->name('life_insurance');
+Route::get('/car_insurance', [App\Http\Controllers\HomeController::class, 'car_insurance'])->name('car_insurance');
+Route::get('/home_insurance', [App\Http\Controllers\HomeController::class, 'home_insurance'])->name('home_insurance');
+
+
+//user controller
+Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('users');
+Route::get('/users/edit/{id}', [App\Http\Controllers\UserController::class, 'edit'])->name('users.edit');
+Route::patch('/users/{id}', [App\Http\Controllers\UserController::class, 'update'])->name('users.update');
+Route::delete('/users/delete/{id}', [App\Http\Controllers\UserController::class, 'destroy'])->name('users.delete');
+
+Route::get('/users/create', [App\Http\Controllers\UserController::class, 'create'])->name('users.create');
+Route::post('/ajax_users', [App\Http\Controllers\UserController::class, 'ajax_users'])->name('ajax_users');
+Route::post('/users/store', [App\Http\Controllers\UserController::class, 'store'])->name('users.store');
+
+
 

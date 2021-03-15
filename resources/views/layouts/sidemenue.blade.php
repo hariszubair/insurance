@@ -57,18 +57,40 @@
                                        
                                       
                                         <li class="nk-menu-item">
-                                            <a href="{{URL('dashboard')}}" class="nk-menu-link">
-                                                <span class="nk-menu-icon"><em class="icon ni ni-dashlite"></em></span>
+                                            <a href="{{URL('home')}}" class="nk-menu-link">
+                                                <span class="nk-menu-icon"><i class="fas fa-home fa-lg"></i></span>
                                                 <span class="nk-menu-text">Dashboard</span>
                                             </a>
                                         </li><!-- .nk-menu-item -->
+                                       <li class="nk-menu-item has-sub">
+                                            <a href="#" class="nk-menu-link nk-menu-toggle">
+                                                <span class="nk-menu-icon"><i class="fas fa-fingerprint fa-lg"></i></span>
+                                                <span class="nk-menu-text">Authorization</span>
+                                            </a>
+                                            <ul class="nk-menu-sub">
+                                                <li class="nk-menu-item">
+                                                    <a href="{{Route('permissions')}}" class="nk-menu-link"><span class="nk-menu-text">Permissions</span></a>
+                                                </li>
+                                                <li class="nk-menu-item">
+                                                    <a href="{{Route('roles')}}" class="nk-menu-link"><span class="nk-menu-text">Roles</span></a>
+                                                </li>
+                                                <li class="nk-menu-item">
+                                                    <a href="{{Route('user.roles')}}" class="nk-menu-link"><span class="nk-menu-text">Users->Roles</span></a>
+                                                </li>
+                                                <li class="nk-menu-item">
+                                                    <a href="{{Route('role.permission')}}" class="nk-menu-link"><span class="nk-menu-text">Roles->Permissions</span></a>
+                                                </li>
+                                                <li class="nk-menu-item">
+                                                    <a href="{{Route('users.permission')}}" class="nk-menu-link"><span class="nk-menu-text">Users->Permissions</span></a>
+                                                </li>
+                                            </ul><!-- .nk-menu-sub -->
+                                        </li>
                                         <li class="nk-menu-item">
-                                            <a href="/a.html" class="nk-menu-link">
-                                                <span class="nk-menu-icon"><em class="icon ni ni-dashlite"></em></span>
-                                                <span class="nk-menu-text">Insurance</span>
+                                            <a href="{{URL('users')}}" class="nk-menu-link">
+                                                <span class="nk-menu-icon"><i class="fas fa-users  fa-lg"></i></span>
+                                                <span class="nk-menu-text">Users</span>
                                             </a>
                                         </li>
-                                       
                                     </ul><!-- .nk-menu -->
                                 </div><!-- .nk-sidebar-menu -->
                                 <div class="nk-aside-close">

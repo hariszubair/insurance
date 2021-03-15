@@ -1,5 +1,5 @@
 
-<body class="nk-body bg-white npc-default has-aside ">
+<body class="nk-body bg-white npc-default has-aside {{Auth::user()->dark_mode ==1 ? 'dark-mode' : ''}} ">
     <div class="nk-app-root">
         <!-- main @s -->
         <div class="nk-main ">
@@ -17,48 +17,8 @@
                             <div class="nk-header-menu">
                                 <ul class="nk-menu nk-menu-main">
                                     <li class="nk-menu-item">
-                                        <a href="{{URL('/welcome')}}" class="nk-menu-link">
+                                        <a href="{{URL('welcome')}}" class="nk-menu-link">
                                             <span class="nk-menu-text">Home</span>
-                                        </a>
-                                    </li><!-- .nk-menu-item -->
-                                    <li class="nk-menu-item has-sub">
-                                        <a href="#" class="nk-menu-link nk-menu-toggle">
-                                            <span class="nk-menu-text">Apps</span>
-                                        </a>
-                                        <ul class="nk-menu-sub">
-                                            <li class="nk-menu-item">
-                                                <a href="html/apps-messages.html" class="nk-menu-link"><span class="nk-menu-text">Messages</span></a>
-                                            </li>
-                                            <li class="nk-menu-item">
-                                                <a href="html/apps-inbox.html" class="nk-menu-link"><span class="nk-menu-text">Inbox / Mail</span></a>
-                                            </li>
-                                            <li class="nk-menu-item">
-                                                <a href="html/apps-file-manager.html" class="nk-menu-link"><span class="nk-menu-text">File Manager</span></a>
-                                            </li>
-                                            <li class="nk-menu-item">
-                                                <a href="html/apps-chats.html" class="nk-menu-link"><span class="nk-menu-text">Chats / Messenger</span></a>
-                                            </li>
-                                            <li class="nk-menu-item">
-                                                <a href="html/apps-calendar.html" class="nk-menu-link"><span class="nk-menu-text">Calendar</span><span class="nk-menu-badge badge-warning">New</span></a>
-                                            </li>
-                                            <li class="nk-menu-item">
-                                                <a href="html/apps-kanban.html" class="nk-menu-link"><span class="nk-menu-text">Kanban Board</span><span class="nk-menu-badge badge-warning">New</span></a>
-                                            </li>
-                                        </ul><!-- .nk-menu-sub -->
-                                    </li><!-- .nk-menu-item -->
-                                    <li class="nk-menu-item">
-                                        <a href="html/components.html" class="nk-menu-link">
-                                            <span class="nk-menu-text">Components</span>
-                                        </a>
-                                    </li><!-- .nk-menu-item -->
-                                    <li class="nk-menu-item">
-                                        <a href="html/support-kb.html" class="nk-menu-link">
-                                            <span class="nk-menu-text">Support</span>
-                                        </a>
-                                    </li><!-- .nk-menu-item -->
-                                    <li class="nk-menu-item">
-                                        <a href="html/pages/contact.html" class="nk-menu-link">
-                                            <span class="nk-menu-text">Contact</span>
                                         </a>
                                     </li><!-- .nk-menu-item -->
                                 </ul><!-- .nk-menu -->
@@ -149,22 +109,17 @@
                                             <div class="dropdown-inner user-card-wrap bg-lighter d-none d-md-block">
                                                 <div class="user-card">
                                                     <div class="user-avatar">
-                                                        <span>AB</span>
+                                                        <span>{{strtoupper(Auth::user()->name[0])}}</span>
                                                     </div>
                                                     <div class="user-info">
-                                                        <span class="lead-text">Abu Bin Ishtiyak</span>
-                                                        <span class="sub-text">info@softnio.com</span>
+                                                        <span class="lead-text">{{Auth::user()->name}}</span>
+                                                        <span class="sub-text">{{Auth::user()->email}}</span>
                                                     </div>
-                                                    <div class="user-action">
-                                                        <a class="btn btn-icon mr-n2" href="html/user-profile-setting.html"><em class="icon ni ni-setting"></em></a>
-                                                    </div>
+                                                   
                                                 </div>
                                             </div>
                                             <div class="dropdown-inner">
                                                 <ul class="link-list">
-                                                    <li><a href="html/user-profile-regular.html"><em class="icon ni ni-user-alt"></em><span>View Profile</span></a></li>
-                                                    <li><a href="html/user-profile-setting.html"><em class="icon ni ni-setting-alt"></em><span>Account Setting</span></a></li>
-                                                    <li><a href="html/user-profile-activity.html"><em class="icon ni ni-activity-alt"></em><span>Login Activity</span></a></li>
                                                     <li><a class="dark-switch" href="#"><em class="icon ni ni-moon"></em><span>Dark Mode</span></a></li>
                                                 </ul>
                                             </div>
