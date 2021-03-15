@@ -20,6 +20,10 @@ Route::get('/welcome', function () {
     return view('welcome');
 });
 Auth::routes();
+Route::get('/clear-cache', function() {
+    $exitCode = Artisan::call('config:cache');
+    $exitCode = Artisan::call('cache:clear');
+});
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
