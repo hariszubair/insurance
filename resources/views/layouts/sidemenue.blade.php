@@ -62,6 +62,7 @@
                                                 <span class="nk-menu-text">Dashboard</span>
                                             </a>
                                         </li><!-- .nk-menu-item -->
+                    @if(\Auth::user()->isAdmin())
                                        <li class="nk-menu-item has-sub">
                                             <a href="#" class="nk-menu-link nk-menu-toggle">
                                                 <span class="nk-menu-icon"><i class="fas fa-fingerprint fa-lg"></i></span>
@@ -85,12 +86,15 @@
                                                 </li>
                                             </ul><!-- .nk-menu-sub -->
                                         </li>
+                                        @endif
+                                         @if(\Auth::user()->hasAnyPermission(['add user','edit user','delete user']))
                                         <li class="nk-menu-item">
                                             <a href="{{URL('users')}}" class="nk-menu-link">
                                                 <span class="nk-menu-icon"><i class="fas fa-users  fa-lg"></i></span>
                                                 <span class="nk-menu-text">Users</span>
                                             </a>
                                         </li>
+                                        @endif
                                     </ul><!-- .nk-menu -->
                                 </div><!-- .nk-sidebar-menu -->
                                 <div class="nk-aside-close">

@@ -57,7 +57,7 @@
                         <tr>
                         <td>{{$key+1}}</td>
                         <td>{{$role->name}}</td>
-                        <td><input type="checkbox" id="{{$role->id}}" name="{{$role->id}}"></td>
+                        <td><input type="radio" id="{{$role->id}}" name="role" value="{{$role->id}}"></td>
                         </tr>
                         @endforeach
                       </tbody>
@@ -67,12 +67,6 @@
                         <div class="col-md-12 col-sm-12 col-xs-12 ">
                           <button  type="submit" class="btn btn-primary" style="padding: 4px 15px 3px 15px">
                                    Submit
-                                </button>
-                          <button type="button" id="all" style="float: left;" class="btn btn-primary" title="Check All" >
-                                  <i class="far fa-check-square"></i>
-                                </button>
-                                <button type="button" id="none" style="float: left;" class="btn btn-primary" title="Un-Check All" >
-                                  <i class="far fa-square"></i>
                                 </button>
                         </div>
                       </div>
@@ -107,10 +101,13 @@
      * On users selection
      */
   $('#user').on('change', function(){
-    
-    $('#roles').DataTable().search('').draw();  
+    if($('#user').val() == ''){
+           $('input:radio:checked').prop('checked', false);
+    }
+    else{
+      $('#roles').DataTable().search('').draw();  
     users_roles();
-      
+    }
     });
 
 
@@ -134,7 +131,7 @@ function users_roles(){
         success: function (data){
            var jsonData = JSON.parse(data);
            // alert(jsonData[i].name);
-           $('input:checkbox').prop('checked', false);
+           $('input:radio:checked').prop('checked', false);
       for (var i = 0; i < jsonData.length; i++) {
     var counter = jsonData[i];
     var id=counter.id
@@ -184,22 +181,6 @@ function users_roles(){
 
   });
     
-
-    /**
-     * check all
-     */
-   $('#all').click(function(){
-          var allInputs = $( "form#users_asign_roles :input[type='checkbox']:enabled" );
-          allInputs.prop('checked', true);
-          }); 
-/**
-     * Un check all
-     */
-   $('#none').click(function(){
-          var allInputs = $( "form#users_asign_roles :input[type='checkbox']:enabled" );
-          allInputs.prop('checked', false);
-          
-      });
  
 </script>
 

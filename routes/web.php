@@ -44,14 +44,14 @@ Route::get('/home_insurance', [App\Http\Controllers\HomeController::class, 'home
 
 
 //user controller
-Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('users');
-Route::get('/users/edit/{id}', [App\Http\Controllers\UserController::class, 'edit'])->name('users.edit');
-Route::patch('/users/{id}', [App\Http\Controllers\UserController::class, 'update'])->name('users.update');
-Route::delete('/users/delete/{id}', [App\Http\Controllers\UserController::class, 'destroy'])->name('users.delete');
+Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('users')->middleware(['permission:add user|edit user|delete user']);
+Route::get('/users/edit/{id}', [App\Http\Controllers\UserController::class, 'edit'])->name('users.edit')->middleware(['permission:edit user']);;
+Route::patch('/users/{id}', [App\Http\Controllers\UserController::class, 'update'])->name('users.update')->middleware(['permission:edit user']);;
+Route::delete('/users/delete/{id}', [App\Http\Controllers\UserController::class, 'destroy'])->name('users.delete')->middleware(['permission:delete user']);;
 
-Route::get('/users/create', [App\Http\Controllers\UserController::class, 'create'])->name('users.create');
-Route::post('/ajax_users', [App\Http\Controllers\UserController::class, 'ajax_users'])->name('ajax_users');
-Route::post('/users/store', [App\Http\Controllers\UserController::class, 'store'])->name('users.store');
+Route::get('/users/create', [App\Http\Controllers\UserController::class, 'create'])->name('users.create')->middleware(['permission:add user']);
+Route::post('/ajax_users', [App\Http\Controllers\UserController::class, 'ajax_users'])->name('ajax_users')->middleware(['permission:add user|edit user|delete user']);
+Route::post('/users/store', [App\Http\Controllers\UserController::class, 'store'])->name('users.store')->middleware(['permission:add user']);
 
 
 

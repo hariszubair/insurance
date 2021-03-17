@@ -131,8 +131,6 @@
                                     @foreach($roles as $role)
                                      <option {{ old('role_id')== $role->id ? 'selected' :'' }} value="{{$role->id}}">{{$role->name}}</option>
                                     @endforeach
-                                   
-                                    <option {{ old('role_id')==3 ? 'selected' :'' }} value="3">Insurance Company</option>
                                 </select>
 
                                 @error('role_id')

@@ -3,7 +3,7 @@
 @section('content')
     
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                <div class="card-header">{{Auth::user()->roles[0]->name}}'s {{ __('Dashboard') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))

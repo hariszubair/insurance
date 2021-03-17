@@ -11,7 +11,7 @@
 
 <meta name="csrf-token" content="{{ csrf_token() }}">
                  <div class="x_parent_case">
-                    <h2>Users <a href="{{URL('users/create')}}" class="btn btn-success" title="Add user"><i class="fas fa-plus"  style="color: white"></i></a>
+                    <h2>Users @can('add user') <a href="{{URL('users/create')}}" class="btn btn-success" title="Add user"><i class="fas fa-plus"  style="color: white"></i></a> @endcan
                      </h2>
                     <div class="clearfix"></div>
                   </div>

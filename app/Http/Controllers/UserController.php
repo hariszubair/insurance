@@ -8,6 +8,7 @@ use App\Models\Role;
 use Yajra\Datatables\Datatables;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -31,8 +32,8 @@ class UserController extends Controller
         $auth=Auth::user();
          return Datatables::of($user)->addColumn('action', function ($row) use($auth){
                 $temp='<div style="width: 100%; display: inline-flex;text-align: center">';
-                $temp.='<a class="btn btn-primary" href="'.URL('users/edit/'.$row->id).'"><i class="far fa-edit"  ></i></a>';
                 if($row->id != $auth->id){
+                     $temp.='<a class="btn btn-primary" href="'.URL('users/edit/'.$row->id).'"><i class="far fa-edit"  ></i></a>';
                     $temp.=' <form method="POST" accept-charset="UTF-8" action="'.URL('users/delete/'.$row->id).'">
                <input type="hidden" name="_method" value="delete" />
               <input type="hidden" name="_token" value=" '.csrf_token().' ">
@@ -89,6 +90,7 @@ class UserController extends Controller
                         ->withErrors($validator)
                         ->withInput();
         }
+        $input['password']=Hash::make($input['password']);
         $user=User::create($input);
             $user->assignRole($input['role_id']);
         return redirect()->route('users')->with('success', 'User Created');

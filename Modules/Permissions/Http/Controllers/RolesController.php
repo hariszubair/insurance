@@ -186,14 +186,12 @@ class RolesController extends Controller
         $input=$request->all();
         // return $input;   
         $user=User::find($request->user); 
-        $roles=Role::all(['id']);
-        foreach ($roles as $role) {
-           if(isset($input[$role->id])){
-            $user->assignRole($role->id);
-           }
-           else {
-            $user->removeRole($role->id);
-           }
+        if(count($user->roles) > 0){
+            $user->removeRole($user->roles[0]->id);
+            $user->assignRole($request->role);
+        } 
+        else{
+            $user->assignRole($request->role);
         }
          return 1;
         
