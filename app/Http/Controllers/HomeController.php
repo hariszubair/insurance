@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Insurance;
 class HomeController extends Controller
 {
     /**
@@ -26,6 +27,18 @@ class HomeController extends Controller
      */
     public function index()
     {
+        // return Auth::user()->roles->first()->id;
+        // return Auth::user()->insurances;
+        if(Auth::user()->roles->first()->id==3){
+            if(count(Auth::user()->insurances) == 0){
+                $insurances=Insurance::all();
+                return view('vendor.insurance',compact('insurances'));
+            }
+        return view('vendor.dashboard');
+        }
+        else if(Auth::user()->roles->first()->id==2){
+        return view('client.dashboard');
+        }
         return view('home');
     }
     public function welcome()

@@ -50,4 +50,20 @@ class User extends Authenticatable
         return false;
 
     }
+     public function insurances()
+    {
+        return $this->belongsToMany(
+        Insurance::class,
+        'vendor_insurances',
+        'user_id',
+        'insurance_id');
+    }
+     public function pivot_insurance()
+    {
+       return $this->hasMany('App\Models\VendorInsurance');
+    }
+    public function quotes()
+    {
+       return $this->hasMany('App\Models\AutoQuote','client_id','id')->where('status','Pending');
+    }
 }

@@ -1,6 +1,6 @@
 
                                 <!-- footer @s -->
-                                <div class="nk-footer">
+                                <div class="nk-footer" style="bottom: 0;position: fixed;">
                                     <div class="container wide-xl">
                                         <div class="nk-footer-wrap g-2">
                                             <div class="nk-footer-copyright"> &copy; 2020 DashLite. Template by <a href="#">Softnio</a>
@@ -30,6 +30,8 @@
 
 
     <script src="{{asset('js/jquery.min.js')}}"></script>
+    
+    
  <script>
    $('.dark-switch').on('click', function (e) {
     $.ajax(

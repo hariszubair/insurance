@@ -61,7 +61,17 @@
                                                 <span class="nk-menu-icon"><i class="fas fa-home fa-lg"></i></span>
                                                 <span class="nk-menu-text">Dashboard</span>
                                             </a>
-                                        </li><!-- .nk-menu-item -->
+                                        </li>
+                                        @hasrole('Company')
+                                        @can('Auto')
+                                        <li class="nk-menu-item">
+                                            <a href="{{URL('vendor/auto_quote')}}" class="nk-menu-link">
+                                                <span class="nk-menu-icon"><i class="fas fa-home fa-lg"></i></span>
+                                                <span class="nk-menu-text">Auto</span>
+                                            </a>
+                                        </li>
+                                        @endcan
+                                        @endhasrole<!-- .nk-menu-item -->
                     @if(\Auth::user()->isAdmin())
                                        <li class="nk-menu-item has-sub">
                                             <a href="#" class="nk-menu-link nk-menu-toggle">
@@ -95,6 +105,14 @@
                                             </a>
                                         </li>
                                         @endif
+                                         @hasrole('Individual')
+                                        <li class="nk-menu-item">
+                                            <a href="{{URL('auto_requests')}}" class="nk-menu-link">
+                                                <span class="nk-menu-icon"><i class="fas fa-users  fa-lg"></i></span>
+                                                <span class="nk-menu-text">Available Quotes</span>
+                                            </a>
+                                        </li>
+                                        @endhasrole
                                     </ul><!-- .nk-menu -->
                                 </div><!-- .nk-sidebar-menu -->
                                 <div class="nk-aside-close">

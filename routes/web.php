@@ -43,6 +43,7 @@ Route::get('/car_insurance', [App\Http\Controllers\HomeController::class, 'car_i
 Route::get('/home_insurance', [App\Http\Controllers\HomeController::class, 'home_insurance'])->name('home_insurance');
 
 
+
 //user controller
 Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('users')->middleware(['permission:add user|edit user|delete user']);
 Route::get('/users/edit/{id}', [App\Http\Controllers\UserController::class, 'edit'])->name('users.edit')->middleware(['permission:edit user']);;
@@ -54,4 +55,40 @@ Route::post('/ajax_users', [App\Http\Controllers\UserController::class, 'ajax_us
 Route::post('/users/store', [App\Http\Controllers\UserController::class, 'store'])->name('users.store')->middleware(['permission:add user']);
 
 
+
+//vendor
+
+Route::post('/vendor/insurances', [App\Http\Controllers\VendorController::class, 'insurances'])->name('vendor.insurances');
+Route::get('/vendor/auto_quote', [App\Http\Controllers\VendorController::class, 'auto_quote'])->name('vendor.auto_quote');
+Route::post('/vendor/ajax_auto_quote', [App\Http\Controllers\VendorController::class, 'ajax_auto_quote'])->name('vendor.ajax_auto_quote');
+Route::get('/quote/auto/{id}', [App\Http\Controllers\VendorController::class, 'give_quote'])->name('auto.give_quote');
+Route::post('/auto/submit_value', [App\Http\Controllers\VendorController::class, 'submit_value'])->name('auto.submit_value');
+
+
+
+
+//AutoController
+
+Route::get('/auto/quote', [App\Http\Controllers\AutoController::class, 'quote'])->name('auto.quote');
+
+
+//temp
+Route::post('/auto/temp_store', [App\Http\Controllers\AutoController::class, 'temp_store'])->name('auto.temp_store');
+Route::post('/auto/temp_drivers', [App\Http\Controllers\AutoController::class, 'temp_drivers'])->name('auto.temp_drivers');
+Route::post('/auto/temp_driver_store', [App\Http\Controllers\AutoController::class, 'temp_driver_store'])->name('auto.temp_driver_store');
+Route::post('/auto/temp_driver_edit', [App\Http\Controllers\AutoController::class, 'temp_driver_edit'])->name('auto.temp_driver_edit');
+Route::get('/auto/temp_drivers/delete/{id}', [App\Http\Controllers\AutoController::class, 'temp_driver_delete'])->name('auto.temp_driver_delete');
+
+
+
+
+
+Route::post('/auto/temp_claim_store', [App\Http\Controllers\AutoController::class, 'temp_claim_store'])->name('auto.temp_claim_store');
+Route::post('/auto/temp_claims', [App\Http\Controllers\AutoController::class, 'temp_claims'])->name('auto.temp_claims');
+Route::post('/auto/temp_claims_edit', [App\Http\Controllers\AutoController::class, 'temp_claims_edit'])->name('auto.temp_claims_edit');
+Route::get('/auto/temp_claims/delete/{id}', [App\Http\Controllers\AutoController::class, 'temp_claims_delete'])->name('auto.temp_claims_delete');
+
+
+Route::post('/auto/submit_quote', [App\Http\Controllers\AutoController::class, 'submit_quote'])->name('auto.submit_quote');
+Route::get('/auto_requests', [App\Http\Controllers\AutoController::class, 'auto_requests'])->name('auto_requests');
 
