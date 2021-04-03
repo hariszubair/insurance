@@ -23,8 +23,18 @@
                           <tr>
                               <td>{{$key +1 }}</td>
                               <td>{{$quotes->auto->reg_no}}</td>
-                              <td>{{$quotes->value}}</td>
-                              <td><button>Purchase</button></td>
+                              <td>
+                              @if($quotes->eligibility == 'Eligible')
+                              {{$quotes->value}} @ Month
+                              @else
+                              In-Eligible
+                              @endif
+                              </td>
+                              <td>
+                              @if($quotes->eligibility == 'Eligible')
+                              <button>Purchase</button>
+                              @endif
+                              </td>
                           </tr>
                           @endforeach
                       </tbody>
