@@ -25,35 +25,8 @@ class VendorController extends Controller
     	VendorInsurance::insert($input);
     	return redirect()->back();
     }
-    public function auto_quote(){
+   
+       
 
-       return view('vendor.auto.quote');
-    }
-    public function ajax_auto_quote(){
-        $auto=Auto::with('quotes')->where('status',0);
-       return Datatables::of($auto)->addColumn('request_on', function ($row) {
-                return Carbon::parse($row->created_at)->format('d-m-Y');
-           })->addColumn('quote', function ($row) {
-            if(!$row->quotes){
-                     return '<a class="btn btn-success" href="'.URL('quote/auto/').'/'.$row->id.'">Quote</a>';
-            }
-           else{
-            return $row->quotes->value;
-           }
-           })->escapeColumns([])->make(true);
-    }   
-    public function give_quote   ($id){
-         $auto=Auto::find($id);
-        return view('vendor.auto.vendor_quote',compact('auto'));
-    }
-    public function submit_value(Request $request){
-        $input['client_id']=$request->client_id;
-        $input['company_id']=Auth::user()->id;
-        $input['auto_id']=$request->id;
-        $input['value']=$request->qoute_value;
-        $input['status']='Pending';
-         $auto=AutoQuote::create($input);
-         return redirect()->route('home');
-    }
     
 }

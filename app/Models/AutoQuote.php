@@ -12,7 +12,7 @@ class AutoQuote extends Model
         'client_id',
         'company_id',
         'auto_id',
-        'value',
+        'value','eligibility',
         'status'
     ];
     public function auto()

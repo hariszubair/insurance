@@ -64,12 +64,19 @@
                                         </li>
                                         @hasrole('Company')
                                         @can('Auto')
-                                        <li class="nk-menu-item">
-                                            <a href="{{URL('vendor/auto_quote')}}" class="nk-menu-link">
-                                                <span class="nk-menu-icon"><i class="fas fa-home fa-lg"></i></span>
-                                                <span class="nk-menu-text">Auto</span>
-                                            </a>
-                                        </li>
+                                        <li class="nk-menu-item has-sub">
+                                        <a href="#" class="nk-menu-link nk-menu-toggle">
+                                            <span class="nk-menu-text">Auto Insurance</span>
+                                        </a>
+                                        <ul class="nk-menu-sub">
+                                            <li class="nk-menu-item">
+                                                <a href="{{URL('vendor/auto/pending_quote')}}" class="nk-menu-link"><span class="nk-menu-text">Pending Quotes</span></a>
+                                            </li>
+                                            <li class="nk-menu-item">
+                                                <a href="{{URL('vendor/auto/submitted_quote')}}" class="nk-menu-link"><span class="nk-menu-text">Submitted Quotes</span></a>
+                                            </li>
+                                        </ul><!-- .nk-menu-sub -->
+                                    </li>
                                         @endcan
                                         @endhasrole<!-- .nk-menu-item -->
                     @if(\Auth::user()->isAdmin())

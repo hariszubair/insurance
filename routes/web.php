@@ -59,10 +59,18 @@ Route::post('/users/store', [App\Http\Controllers\UserController::class, 'store'
 //vendor
 
 Route::post('/vendor/insurances', [App\Http\Controllers\VendorController::class, 'insurances'])->name('vendor.insurances');
-Route::get('/vendor/auto_quote', [App\Http\Controllers\VendorController::class, 'auto_quote'])->name('vendor.auto_quote');
-Route::post('/vendor/ajax_auto_quote', [App\Http\Controllers\VendorController::class, 'ajax_auto_quote'])->name('vendor.ajax_auto_quote');
-Route::get('/quote/auto/{id}', [App\Http\Controllers\VendorController::class, 'give_quote'])->name('auto.give_quote');
-Route::post('/auto/submit_value', [App\Http\Controllers\VendorController::class, 'submit_value'])->name('auto.submit_value');
+Route::get('/vendor/auto/pending_quote', [App\Http\Controllers\AutoController::class, 'pending_quote'])->name('vendor.auto_pending_quote');
+Route::post('/vendor/auto/ajax_pending_quote', [App\Http\Controllers\AutoController::class, 'ajax_pending_quote'])->name('vendor.ajax_auto_pending_quote');
+Route::get('/auto/quote/{id}', [App\Http\Controllers\AutoController::class, 'give_quote'])->name('auto.give_quote');
+Route::post('/auto/submit_value', [App\Http\Controllers\AutoController::class, 'submit_value'])->name('auto.submit_value');
+
+Route::get('/vendor/auto/submitted_quote', [App\Http\Controllers\AutoController::class, 'submitted_quote'])->name('vendor.auto.submitted_quote');
+Route::post('/vendor/auto/ajax_submitted_quote', [App\Http\Controllers\AutoController::class, 'ajax_submitted_quote'])->name('vendor.ajax_auto_submitted_quote');
+
+
+
+Route::get('/vendor/submitted_quote', [App\Http\Controllers\VendorController::class, 'submitted_quote'])->name('vendor.submitted_quote');
+
 
 
 

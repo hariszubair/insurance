@@ -430,7 +430,15 @@
 
         <div class="row g-gs" style="padding-top: 10px;padding-bottom: 10px" >
           <div class="col-md-6">
-            <label>Quote Value</label>
+            <label>Quote Status</label>
+            <select name="quote_eligibility" id="quote_eligibility" class="form-control" required>
+            <option value="">Please Select the following</option>
+            <option value="Eligible">Eligible</option>
+            <option value="In-Eligible">In-Eligible</option>
+            </select>
+          </div>
+          <div class="col-md-6" id="quote_value_div" style="display:none">
+            <label>Quote Value @ Month </label>
             <input id="qoute_value" type="text" class="form-control" name="qoute_value"   autofocus required>
                                       
           </div>
@@ -597,6 +605,20 @@
             $( "#penalty_reason_div").hide();
             $('#points_count').val(null);
             $('#penalty_reason').val(null);
+
+        }
+     });
+     $( "#quote_eligibility" ).on('change',function() {
+        if($( "#quote_eligibility").val() == 'Eligible'){
+            $( "#quote_value_div").show();
+            $('#quote_value').val(null);
+            $("input").prop('required',true);
+
+        }
+        else{
+          $( "#quote_value_div").hide();
+          $('#quote_value').val(null);
+          $("input").prop('required',false);
 
         }
      });

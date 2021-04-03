@@ -17,6 +17,7 @@ class CreateAutoQuotesTable extends Migration
             $table->id();
             $table->integer('user_id');
             $table->integer('auto_id');
+            $table->string('status');
             $table->integer('value');
             $table->string('status');
             $table->timestamps();

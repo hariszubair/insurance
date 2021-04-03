@@ -1,10 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+
+.table {
+  margin-top: 20px;
+  margin-bottom: 20px !important;
+}
+</style>
 <meta name="csrf-token" content="{{ csrf_token() }}">
     
             <div class="card">
-                <div class="card-header">Request fot quotes</div>
+                <div class="card-header">Request for quotes</div>
 
                 <div class="card-body">
                      <table  id="requests" class="table-striped table-bordered compact compact table"  cellspacing="0" width="100%" >
@@ -29,7 +36,7 @@
      $(document).ready(function() {
 
     $('#requests').DataTable({
-      dom:"<'row'<'col-sm-7'f><'col-sm-5 text-right'l>><'row'<'col-sm-12'r>>t<<'row'<'col'i><'col text-center'p><'col'>>>",
+      dom:"<'row '<'col-sm-7'f><'col-sm-5 text-right'l>><'row'<'col-sm-12'r>>t<<'row'<'col'i><'col text-center'p><'col'>>>",
         processing: true,
         serverSide: true,
          
@@ -37,7 +44,7 @@
            headers: {
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
           },
-         url:'{{url("vendor/ajax_auto_quote") }}',
+         url:'{{url("vendor/auto/ajax_pending_quote") }}',
            method: 'Post',
            
 },

@@ -105,5 +105,49 @@ class AutoController extends Controller
         return view('client.auto_request',compact('users'));
 
     }
+    public function pending_quote(){
+
+        return view('vendor.auto.pending_quote');
+     }
+     public function ajax_pending_quote(){
+        $auto=Auto::doesnthave('quotes')->where('status',0);
+       return Datatables::of($auto)->addColumn('request_on', function ($row) {
+                return Carbon::parse($row->created_at)->format('d-m-Y');
+           })->addColumn('quote', function ($row) {
+                     return '<a class="btn btn-success" href="'.URL('auto/quote/').'/'.$row->id.'">Quote</a>';
+           })->escapeColumns([])->make(true);   
+    }
+    public function give_quote($id){
+        $auto=Auto::find($id);
+       return view('vendor.auto.vendor_quote',compact('auto'));
+   }
+   public function submitted_quote(){
+
+    return view('vendor.auto.submitted_quote');
+    }
+    public function ajax_submitted_quote(){
+        $auto=Auto::has('quotes')->with('quotes')->where('status',0);
+       return Datatables::of($auto)->addColumn('request_on', function ($row) {
+                return Carbon::parse($row->created_at)->format('d-m-Y');
+           })->addColumn('quote', function ($row) {
+               if($row->quotes->eligibility == 'Eligible'){
+                return $row->quotes->value .' @ Month';
+               }
+               else{
+                   return 'In-Eligible';
+               }
+           })->escapeColumns([])->make(true);
+    }
+        
+    public function submit_value(Request $request){
+        $input['client_id']=$request->client_id;
+        $input['company_id']=Auth::user()->id;
+        $input['auto_id']=$request->id;
+        $input['value']=$request->qoute_value;
+        $input['eligibility']=$request->quote_eligibility   ;
+        $input['status']='Pending';
+         $auto=AutoQuote::create($input);
+         return redirect()->route('home');
+    }
 
 }
