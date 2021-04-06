@@ -9,24 +9,29 @@ use Yajra\Datatables\Datatables;
 use App\Models\TempClaim;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Auto;
+use App\Models\AutoQuote;
 use App\Models\Driver;
 use App\Models\Claim;
 use App\Models\User;
 use Carbon\Carbon;
 class AutoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function quote(){
     	return view('insurance.auto.quote');
     }
     public function temp_store(Request $request){
     	$input=$request->all();
     	$tempAutoModel = new TempAuto();
+    	$input['step']=$request->step;
     	if($input['type']== 1){
     		$input['user_id']=Auth::user()->id;
     		return TempAuto::create($input)->id;
     	}
     	else{
-
     		TempAuto::where('id',$input['record_id'])->update($request->only($tempAutoModel->getFillable()));
     	}
     	
@@ -43,6 +48,8 @@ class AutoController extends Controller
         $input= $request->all();
         $input['tempauto_id']=$request->record_id;
         TempDriver::create($input); 
+    		TempAuto::where('id',$request->record_id)->update(['step'=>3]);
+
         return 1;
     }
     public function temp_driver_edit(Request $request){
@@ -65,6 +72,7 @@ class AutoController extends Controller
         $input= $request->all();
         $input['tempauto_id']=$request->record_id;
         TempClaim::create($input); 
+    	TempAuto::where('id',$request->record_id)->update(['step'=>4]);
         return 1;
     }
     public function temp_claims_edit(Request $request){
@@ -97,12 +105,15 @@ class AutoController extends Controller
             $drivers[$key]['updated_at']=Carbon::now();
         }
         Driver::insert($drivers);
+        TempClaim::where('tempauto_id',$temp_auto->id)->delete();
+        TempDriver::where('tempauto_id',$temp_auto->id)->delete();
+        $temp_auto->delete();
         return redirect()->route('home');
     }
     public function auto_requests(){
         $users= User::with('quotes.auto')->find(Auth::user()->id);
 
-        return view('client.auto_request',compact('users'));
+        return view('client.auto.auto_request',compact('users'));
 
     }
     public function pending_quote(){
@@ -149,5 +160,13 @@ class AutoController extends Controller
          $auto=AutoQuote::create($input);
          return redirect()->route('home');
     }
+    public function incomplete_quotes(){
+        $users= User::with('incomplete_auto_quotes')->find(Auth::user()->id);
 
+        return view('client.auto.incomplete_quotes',compact('users'));
+    }
+    public function incomplete_quote_submit(Request $request){
+        $auto=TempAuto::find($request->id);
+       return view('client.auto.fill_incomplete_quote',compact('auto'));
+    }
 }

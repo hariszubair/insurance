@@ -113,12 +113,32 @@
                                         </li>
                                         @endif
                                          @hasrole('Individual')
+                                         <li class="nk-menu-item has-sub">
+                                        <a href="#" class="nk-menu-link nk-menu-toggle">
+                                            <span class="nk-menu-text"> Auto Insurance</span>
+                                        </a>
+                                        <ul class="nk-menu-sub">
+                                        <li class="nk-menu-item">
+                                            <a href="{{URL('/auto/quote')}}" class="nk-menu-link">
+                                                <span class="nk-menu-icon"><i class="fas fa-users  fa-lg"></i></span>
+                                                <span class="nk-menu-text" style="padding-left:10px">Request for Quote</span>
+                                            </a>
+                                        </li>
                                         <li class="nk-menu-item">
                                             <a href="{{URL('auto_requests')}}" class="nk-menu-link">
                                                 <span class="nk-menu-icon"><i class="fas fa-users  fa-lg"></i></span>
-                                                <span class="nk-menu-text">Available Quotes</span>
+                                                <span class="nk-menu-text" style="padding-left:10px"> Available Quotes</span>
                                             </a>
                                         </li>
+                                        <li class="nk-menu-item">
+                                            <a href="{{URL('auto/incomplete_quotes')}}" class="nk-menu-link">
+                                                <span class="nk-menu-icon"><i class="fas fa-users  fa-lg"></i></span>
+                                                <span class="nk-menu-text" style="padding-left:10px">Incomplete Quotes</span>
+                                            </a>
+                                        </li>
+                                        </ul><!-- .nk-menu-sub -->
+                                    </li>
+                                        
                                         @endhasrole
                                     </ul><!-- .nk-menu -->
                                 </div><!-- .nk-sidebar-menu -->

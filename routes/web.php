@@ -56,7 +56,7 @@ Route::post('/users/store', [App\Http\Controllers\UserController::class, 'store'
 
 
 
-//vendor
+//vendor auto
 
 Route::post('/vendor/insurances', [App\Http\Controllers\VendorController::class, 'insurances'])->name('vendor.insurances');
 Route::get('/vendor/auto/pending_quote', [App\Http\Controllers\AutoController::class, 'pending_quote'])->name('vendor.auto_pending_quote');
@@ -100,3 +100,5 @@ Route::get('/auto/temp_claims/delete/{id}', [App\Http\Controllers\AutoController
 Route::post('/auto/submit_quote', [App\Http\Controllers\AutoController::class, 'submit_quote'])->name('auto.submit_quote');
 Route::get('/auto_requests', [App\Http\Controllers\AutoController::class, 'auto_requests'])->name('auto_requests');
 
+Route::get('/auto/incomplete_quotes', [App\Http\Controllers\AutoController::class, 'incomplete_quotes'])->name('auto.incomplete_quotes');
+Route::post('/auto/incomplete_quote_submit', [App\Http\Controllers\AutoController::class, 'incomplete_quote_submit'])->name('auto.incomplete_quote_submit');

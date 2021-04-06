@@ -11,6 +11,10 @@ use Yajra\Datatables\Datatables;
 use Carbon\Carbon;
 class VendorController extends Controller
 {
+	public function __construct()
+    {
+        $this->middleware('auth');
+    }
     //
     public function insurances(Request $request){
     	$input=[];

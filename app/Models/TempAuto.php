@@ -9,6 +9,7 @@ class TempAuto extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'step',
         'user_id',
         'car_make',
         'car_model',

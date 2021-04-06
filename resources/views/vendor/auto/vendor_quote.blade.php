@@ -20,7 +20,7 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
     <input id="record_id" name="record_id" value="{{$auto->id}}" style="display: none">
     <div style="text-align:center;padding-bottom: 20px">
-        <button type="button" class="btn btn-success" data-toggle="modal" data-target=".give_quote">Give Quote</button>
+        <button id="give_quote" type="button" class="btn btn-success" data-toggle="modal" data-target=".give_quote">Give Quote</button>
     </div>
   <div class="list-group" id="accordion">
 
@@ -89,13 +89,8 @@
                                     <div class="input-icon">
                                         <i class="ri-user-line color-primary"></i>
                                     </div>
-                                    <select id="fuel_type" type="text" class="form-control" name="fuel_type"  autofocus>
-                                        <option value="">Please select the following</option>
-                                        <option {{$auto->fuel_type == 'Diesel' ? 'selected' : ''}} value="Diesel">Diesel</option>
-                                        <option {{$auto->fuel_type == 'Petrol' ? 'selected' : ''}} value="Petrol">Petrol</option>
-                                        <option {{$auto->fuel_type == 'Hybrid' ? 'selected' : ''}} value="Hybrid">Hybrid</option>
-                                        <option {{$auto->fuel_type == 'Electric' ? 'selected' : ''}} value="Electric">Electric</option>
-                                    </select>
+                                    
+                                    <input id="fuel_type" type="text" class="form-control" name="fuel_type"  autofocus value="{{$auto->fuel_type}}">
                                 </div>
                               </div>
                             </div>
@@ -110,11 +105,7 @@
                                     <div class="input-icon">
                                         <i class="ri-user-line color-primary"></i>
                                     </div>
-                                    <select id="buisness_purpose" type="text" class="form-control" name="buisness_purpose"   autofocus>
-                                        <option value="">Please select the following</option>
-                                        <option {{$auto->buisness_purpose == 'Yes' ? 'selected' : ''}} value="Yes">Yes</option>
-                                        <option {{$auto->buisness_purpose == 'No' ? 'selected' : ''}} value="No">No</option>
-                                    </select>
+                                    <input value="{{$auto->buisness_purpose}}" id="buisness_purpose" type="text" class="form-control" name="buisness_purpose"   autofocus>
                                 </div>
                               </div>
                             </div>
@@ -130,11 +121,7 @@
                                     <div class="input-icon">
                                         <i class="ri-user-line color-primary"></i>
                                     </div>
-                                    <select id="business_type" type="text" class="form-control" name="business_type"   autofocus required>
-                                        <option  value="">Please select the following</option>
-                                        <option {{$auto->business_type == 'Limited Buisness Use' ? 'selected' : ''}} value="Limited Buisness Use">Limited Buisness Use</option>
-                                        <option {{$auto->business_type == 'Buisness Use' ? 'selected' : ''}} value="Buisness Use">Buisness Use</option>
-                                    </select>
+                                    <input value="{{$auto->business_type}}" id="business_type" type="text" class="form-control" name="business_type"   autofocus required>
                                 </div>
                               </div>
                             </div>
@@ -151,11 +138,7 @@
                                     <div class="input-icon">
                                         <i class="ri-user-line color-primary"></i>
                                     </div>
-                                    <select id="car_commute" type="text" class="form-control" name="car_commute"   autofocus required>
-                                        <option value="">Please select the following</option>
-                                        <option {{$auto->car_commute == 'Yes' ? 'selected' : ''}} value="Yes">Yes</option>
-                                        <option {{$auto->car_commute == 'No' ? 'selected' : ''}} value="No">No</option>
-                                    </select>
+                                    <input value="{{$auto->car_commute}}"  id="car_commute" type="text" class="form-control" name="car_commute"   autofocus required>
                                 </div>
                               </div>
                             </div>
@@ -171,28 +154,7 @@
                                     <div class="input-icon">
                                         <i class="ri-user-line color-primary"></i>
                                     </div>
-                                    <select id="average_drive" type="text" class="form-control" name="average_drive"   autofocus required>
-                                        <option value="">Please select the following</option>
-                                        <option {{$auto->average_drive == 'Up to 5,000 km' ? 'selected' : ''}}>Up to 5,000 km</option>
-                                        <option  {{$auto->average_drive == 'Up to 8,000 km' ? 'selected' : ''}}>Up to 8,000 km</option>
-                                        <option  {{$auto->average_drive == 'Up to 10,000 km' ? 'selected' : ''}}>Up to 10,000 km</option>
-                                        <option  {{$auto->average_drive == 'Up to 11,000 km' ? 'selected' : ''}}>Up to 11,000 km</option>
-                                        <option  {{$auto->average_drive == 'Up to 12,000 km' ? 'selected' : ''}}>Up to 12,000 km</option>
-                                        <option  {{$auto->average_drive == 'Up to 13,000 km' ? 'selected' : ''}}>Up to 13,000 km</option>
-                                        <option  {{$auto->average_drive == 'Up to 14,000 km' ? 'selected' : ''}}>Up to 14,000 km</option>
-                                        <option  {{$auto->average_drive == 'Up to 15,000 km' ? 'selected' : ''}}>Up to 15,000 km</option>
-                                        <option   {{$auto->average_drive == 'Up to 16,000 km' ? 'selected' : ''}}>Up to 16,000 km</option>
-                                        <option   {{$auto->average_drive == 'Up to 17,000 km' ? 'selected' : ''}}>Up to 17,000 km</option>
-                                        <option   {{$auto->average_drive == 'Up to 18,000 km' ? 'selected' : ''}}>Up to 18,000 km</option>
-                                        <option   {{$auto->average_drive == 'Up to 19,000 km' ? 'selected' : ''}}>Up to 19,000 km</option>
-                                        <option  {{$auto->average_drive == 'Up to 20,000 km' ? 'selected' : ''}}>Up to 20,000 km</option>
-                                        <option  {{$auto->average_drive == 'Up to 25,000 km' ? 'selected' : ''}}>Up to 25,000 km</option>
-                                        <option  {{$auto->average_drive == 'Up to 30,000 km' ? 'selected' : ''}}>Up to 30,000 km</option>
-                                        <option  {{$auto->average_drive == 'Up to 35,000 km' ? 'selected' : ''}}>Up to 35,000 km</option>
-                                        <option  {{$auto->average_drive == 'Up to 40,000 km' ? 'selected' : ''}}>Up to 40,000 km</option>
-                                        <option  {{$auto->average_drive == 'Up to 50,000 km' ? 'selected' : ''}}>Up to 50,000 km</option>
-                                        <option  {{$auto->average_drive == 'Over 50,000 km' ? 'selected' : ''}} >Over 50,000 km</option>
-                                    </select>
+                                    <input value="{{$auto->average_drive}}" id="average_drive" type="text" class="form-control" name="average_drive"   autofocus required>
                                 </div>
                               </div>
                             </div>
@@ -210,34 +172,12 @@
           <div class="row g-gs" style="padding-top: 10px;padding-bottom: 10px">
           <div class="col-md-6" >
             <label>Choose your current driving licence</label>
-            <select id="driving_licence" type="text" class="form-control" name="driving_licence"   autofocus required>
-                                        <option value="">Please select the following</option>
-                                        
-                                        <option {{$auto->driving_licence == 'ROI(Full)' ? 'selected' : ''}} value="ROI(Full)">ROI(Full)</option>
-                                        <option {{$auto->driving_licence == 'ROI(Provisional)' ? 'selected' : ''}} value="ROI(Provisional)">ROI(Provisional)</option>
-                                        <option {{$auto->driving_licence == 'UK(Full)' ? 'selected' : ''}} value="UK(Full)">UK(Full)</option>
-                                        <option {{$auto->driving_licence == 'EU(Full)' ? 'selected' : ''}} value="EU(Full)">EU(Full)</option>
-                                        <option {{$auto->driving_licence == 'Other' ? 'selected' : ''}} value="Other">Other</option>
-                                    </select>
+            <input value="{{$auto->driving_licence}}" id="driving_licence" type="text" class="form-control" name="driving_licence"   autofocus required>
           </div>
 
           <div class="col-md-6" >
             <label>How long have you held this licence?</label>
-            <select id="licence_period" type="text" class="form-control" name="licence_period"   autofocus required>
-                                        <option value="">Please select the following</option>
-                                        
-                                        <option {{$auto->licence_period == '10+ years' ? 'selected' : ''}} value="10+ years">10+ years</option>
-                                        <option {{$auto->licence_period == '9 years' ? 'selected' : ''}} value="9 years">9 years</option>
-                                        <option {{$auto->licence_period == '8 years' ? 'selected' : ''}} 9 yearsvalue="8 years">8 years</option>
-                                        <option {{$auto->licence_period == '7 years' ? 'selected' : ''}} 9 yearsvalue="7 years">7 years</option>
-                                        <option {{$auto->licence_period == '6 years' ? 'selected' : ''}} 9 yearsvalue="6 years">6 years</option>
-                                        <option {{$auto->licence_period == '5 years' ? 'selected' : ''}} 9 yearsvalue="5 years">5 years</option>
-                                        <option {{$auto->licence_period == '4 years' ? 'selected' : ''}} 9 yearsvalue="4 years">4 years</option>
-                                        <option {{$auto->licence_period == '3 years' ? 'selected' : ''}} 9 yearsvalue="3 years">3 years</option>
-                                        <option {{$auto->licence_period == '2 years' ? 'selected' : ''}} 9 yearsvalue="2 years">2 years</option>
-                                        <option {{$auto->licence_period == '1 year' ? 'selected' : ''}} 9 yearsvalue="1 year">1 year</option>
-                                        <option {{$auto->licence_period == 'Less than 1 year' ? 'selected' : ''}} 9 yearsvalue="Less than 1 year">Less than 1 year</option>
-                                    </select>
+            <input value="{{$auto->licence_period}}" id="licence_period" type="text" class="form-control" name="licence_period"   autofocus required>
           </div>
           <div class="col-md-6">
                                 <div class="form-group">
@@ -250,11 +190,7 @@
                                     <div class="input-icon">
                                         <i class="ri-user-line color-primary"></i>
                                     </div>
-                                    <select id="penalty_points" type="text" class="form-control" name="penalty_points"   autofocus required>
-                                        <option value="">Please select the following</option>
-                                        <option {{$auto->penalty_points == 'Yes' ? 'selected' : ''}} value="Yes">Yes</option>
-                                        <option {{$auto->penalty_points == 'No' ? 'selected' : ''}} value="No">No</option>
-                                    </select>
+                                    <input value="{{$auto->penalty_points}}" id="penalty_points" type="text" class="form-control" name="penalty_points"   autofocus required>
                                 </div>
                               </div>
                             </div>
@@ -270,15 +206,7 @@
                                     <div class="input-icon">
                                         <i class="ri-user-line color-primary"></i>
                                     </div>
-                                    <select id="points_count" type="text" class="form-control" name="points_count"   autofocus required>
-                                        <option value="">Please select the following</option>
-                                        <option {{$auto->points_count == '1' ? 'selected' : ''}} value="1">1</option>
-                                        <option {{$auto->points_count == '2' ? 'selected' : ''}} value="2">2</option>
-                                        <option {{$auto->points_count == '3' ? 'selected' : ''}} value="3">3</option>
-                                        <option {{$auto->points_count == '4' ? 'selected' : ''}} value="4">4</option>
-                                        <option {{$auto->points_count == '5' ? 'selected' : ''}} value="5">5</option>
-                                        <option {{$auto->points_count == '6+' ? 'selected' : ''}} value="6+">6+</option>
-                                    </select>
+                                    <input value="{{$auto->points_count}}" id="points_count" type="text" class="form-control" name="points_count"   autofocus required>
                                 </div>
                               </div>
                             </div>
@@ -319,11 +247,7 @@
                                     <div class="input-icon">
                                         <i class="ri-user-line color-primary"></i>
                                     </div>
-                                    <select id="penalty_reason" type="text" class="form-control" name="penalty_reason"   autofocus required>
-                                        <option value="">Penalty points given for any of the reasons listed?</option>
-                                        <option {{$auto->penalty_reason == 'Yes' ? 'selected' : ''}} value="Yes">Yes</option>
-                                        <option {{$auto->penalty_reason == 'No' ? 'selected' : ''}} value="No">No</option>
-                                    </select>
+                                    <input value="{{$auto->penalty_reason}}" id="penalty_reason" type="text" class="form-control" name="penalty_reason"   autofocus required>
                                 </div>
                               </div>
                             </div>
@@ -339,13 +263,7 @@
                                     <div class="input-icon">
                                         <i class="ri-user-line color-primary"></i>
                                     </div>
-                                    <select id="recent_insurance" type="text" class="form-control" name="recent_insurance"   autofocus required>
-                                        <option value="">Please select the following</option>
-                                        <option {{$auto->recent_insurance == 'Insured in own name' ? 'selected' : ''}} value="Insured in own name">Insured in own name</option>
-                                        <option {{$auto->recent_insurance == 'No previous insurance' ? 'selected' : ''}} value="No previous insurance">No previous insurance</option>
-                                        <option {{$auto->recent_insurance == 'Insured as named driver' ? 'selected' : ''}} value="Insured as named driver">Insured as named driver</option>
-                                        <option {{$auto->recent_insurance == 'Insured on a company car' ? 'selected' : ''}} value="Insured on a company car">Insured on a company car</option>
-                                    </select>
+                                    <input value="{{$auto->recent_insurance}}" id="recent_insurance" type="text" class="form-control" name="recent_insurance"   autofocus required>
                                 </div>
                               </div>
                             </div>
@@ -411,7 +329,7 @@
     </div>
   </div>
   <!-- edit driver -->
-            <form action="{{URL('auto/submit_value')}}" method="post" style="width: 100%">
+            <form id="give_quote_form" action="{{URL('auto/submit_value')}}" method="post" style="width: 100%">
 @csrf
 
 <div class="modal fade give_quote" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -464,6 +382,12 @@
     <script src="{{asset('js/jquery.accordion-form.js')}}"></script>
 <script type="text/javascript">
     $( document ).ready(function() {
+      $(":input"). prop("disabled", true);
+      $("#give_quote"). prop("disabled", false);
+      $("#give_quote_form :input"). prop("disabled", false);
+
+      
+
     $( "#accordion" ).accWizard({
     mode: 'edit',//wizard, edit
     start:1,

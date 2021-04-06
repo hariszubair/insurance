@@ -66,4 +66,8 @@ class User extends Authenticatable
     {
        return $this->hasMany('App\Models\AutoQuote','client_id','id')->where('status','Pending');
     }
+    public function incomplete_auto_quotes()
+    {
+       return $this->hasMany('App\Models\TempAuto','user_id','id');
+    }
 }
