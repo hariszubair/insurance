@@ -105,7 +105,7 @@
                     <!-- col -->
                     <div class="col-xl-6 col-lg-6 col-md-6">
                         <div class="copyright">
-                            <p>© Copyrights 2020 <a href="index-2.html">Secuure</a> All rights reserved.</p>
+                            <p>© Copyrights 2020 <a href="{{URL('/')}}">AZ Insurance</a> All rights reserved.</p>
                         </div>
                     </div>
                     <!-- col -->
