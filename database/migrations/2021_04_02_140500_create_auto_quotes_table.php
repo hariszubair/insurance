@@ -15,11 +15,12 @@ class CreateAutoQuotesTable extends Migration
     {
         Schema::create('auto_quotes', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
+            $table->integer('client_id');
+            $table->integer('company_id');
             $table->integer('auto_id');
             $table->string('status');
             $table->integer('value');
-            $table->string('status');
+            $table->string('eligibility');
             $table->timestamps();
         });
     }

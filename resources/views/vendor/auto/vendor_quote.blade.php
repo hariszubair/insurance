@@ -327,7 +327,6 @@
         </div>
 
     </div>
-  </div>
   <!-- edit driver -->
             <form id="give_quote_form" action="{{URL('auto/submit_value')}}" method="post" style="width: 100%">
 @csrf
@@ -416,7 +415,7 @@
           headers: {
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
           },
-            url:'{{url('/auto/temp_store') }}',
+            url:'{{url("/auto/temp_store") }}',
             data: $("#car_detail_form").serialize() + "&type="+ type +'&record_id='+record_id,
             type:'POST',
              dataType: "json",
@@ -449,7 +448,7 @@
           headers: {
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
           },
-            url:'{{url('/auto/temp_store') }}',
+            url:'{{url("/auto/temp_store") }}',
             data: $("#driving_history_form").serialize() + "&type="+ type +'&record_id='+record_id,
             type:'POST',
              dataType: "json",
@@ -726,7 +725,7 @@ $('#add_driver_button').click(function() {
           headers: {
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
           },
-            url:'{{url('/auto/temp_driver_store') }}',
+            url:'{{url("/auto/temp_driver_store") }}',
             data: $("#add_driver_form").serialize() + "&type="+ type +'&record_id='+record_id,
             type:'POST',
              dataType: "json",
@@ -749,7 +748,7 @@ $('#edit_driver_button').click(function() {
           headers: {
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
           },
-            url:'{{url('/auto/temp_driver_edit') }}',
+            url:'{{url("/auto/temp_driver_edit") }}',
             data: $("#edit_driver_form").serialize(),
             type:'POST',
              dataType: "json",
@@ -782,7 +781,7 @@ $('#add_claim_button').click(function() {
           headers: {
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
           },
-            url:'{{url('/auto/temp_claim_store') }}',
+            url:'{{url("/auto/temp_claim_store") }}',
             data: $("#add_claims_form").serialize() + "&type="+ type +'&record_id='+record_id,
             type:'POST',
              dataType: "json",
@@ -805,7 +804,7 @@ $('#edit_claims_button').click(function() {
           headers: {
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
           },
-            url:'{{url('/auto/temp_claims_edit') }}',
+            url:'{{url("/auto/temp_claims_edit") }}',
             data: $("#edit_claims_form").serialize(),
             type:'POST',
              dataType: "json",

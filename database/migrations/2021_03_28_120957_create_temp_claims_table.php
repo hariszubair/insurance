@@ -20,7 +20,7 @@ class CreateTempClaimsTable extends Migration
             $table->string('d_o_c');
             $table->string('claim_type');
             $table->string('claim_settled');
-            $table->string('claim_amount');
+            $table->string('claim_amount')->nullable();
             $table->timestamps();
         });
     }

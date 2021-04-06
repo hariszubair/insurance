@@ -25,8 +25,8 @@ class CreateDriversTable extends Migration
             $table->string('driving_licence');
             $table->string('licence_period');
             $table->string('penalty_points');
-            $table->string('points_count');
-            $table->string('penalty_reason');
+            $table->string('points_count')->nullable();
+            $table->string('penalty_reason')->nullable();
             $table->timestamps();
         });
     }

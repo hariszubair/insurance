@@ -16,6 +16,7 @@ class CreateAutosTable extends Migration
         Schema::create('autos', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id');
+            $table->integer('step');
             $table->string('car_make');
             $table->string('car_model');
             $table->string('fuel_type');
@@ -26,8 +27,8 @@ class CreateAutosTable extends Migration
             $table->string('driving_licence');
             $table->string('licence_period');
             $table->string('penalty_points');
-            $table->string('points_count');
-            $table->string('penalty_reason');
+            $table->string('points_count')->nullable();
+            $table->string('penalty_reason')->nullable();
             $table->string('recent_insurance');
             $table->timestamps();
         });

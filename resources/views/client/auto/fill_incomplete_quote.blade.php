@@ -435,7 +435,6 @@
     </div>
 
 </div>
-</div>
 <!-- edit driver -->
 @endsection
 
@@ -478,7 +477,7 @@
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         },
-                        url: '{{url(' / auto / temp_store ') }}',
+                        url: '{{url("/auto/temp_store")}}',
                         data: $("#car_detail_form").serialize() + "&type=" + type + '&record_id=' + record_id,
                         type: 'POST',
                         dataType: "json",
@@ -510,7 +509,7 @@
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         },
-                        url: '{{url(' / auto / temp_store ') }}',
+                        url: '{{url("/auto/temp_store")}}',
                         data: $("#driving_history_form").serialize() + "&type=" + type + '&record_id=' + record_id,
                         type: 'POST',
                         dataType: "json",
