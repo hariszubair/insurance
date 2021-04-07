@@ -34,7 +34,7 @@
                                 <a href="{{URL('health_insurance')}}"> 
                                 <div class="single-categories-item">
                                     <div class="cate-icon">
-                                        <img src="images/icon-img/heath.png" alt="">
+                                        <img src="images/icon-img/health.png" alt="">
                                     </div>
                                     <div class="cate-content">
                                         Health insurance <i class="uil uil-angle-right ml-2"></i>
